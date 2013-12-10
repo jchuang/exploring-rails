@@ -1,1 +1,12 @@
-<p>List your employees here</p>
+<h1>Employees</h1>
+
+<% @employees.each do |employee| %>
+
+  <p><div class="<%= employee.position %>">
+    <span class="name"><%= "Name: #{ employee.first_name } #{ employee.last_name }" %></span><br />
+    <span class="title"><%= "Title: #{ employee.position.capitalize }" %></span><br />
+    <span class="gross_salary"><%= "Gross Salary: #{ sprintf('%.2f', employee.gross_salary) }" %></span><br />
+    <span class="net_pay"><%= "Net Pay: #{ sprintf('%.2f', employee.net_pay) }" %></span><br />
+  </div></p>
+
+<% end %>

@@ -1,16 +1,19 @@
+require 'csv'
+
 class Employee
   TAX_RATE = 0.3
 
-  attr_reader :first_name, :last_name
-  @@employees = []
+  attr_reader :first_name, :last_name, :position
 
-  def initialize(first_name, last_name, base_salary)
+  def initialize(first_name, last_name, position, base_salary)
     @first_name = first_name
     @last_name = last_name
+    @position = position
     @base_salary = base_salary
   end
 
-  def self.employee_data(filename)
+  def self.read_employees(filename)
+    employees = []
     CSV.foreach(filename, headers: true) do |row|
 
       first = row[0]
@@ -22,21 +25,18 @@ class Employee
       percent = row[6].to_f
 
       if position == 'owner'
-        employee = Owner.new(first, last, salary, bonus)
+        employee = Owner.new(first, last, position, salary, bonus)
       elsif position == 'commission sales'
-        employee = CommissionSales.new(first, last, salary, percent)
+        employee = CommissionSales.new(first, last, position, salary, percent)
       elsif position == 'quota sales'
-        employee = QuotaSales.new(first, last, salary, bonus, quota)
+        employee = QuotaSales.new(first, last, position, salary, bonus, quota)
       else
-        employee = self.new(first, last, salary)
+        employee = self.new(first, last, position, salary)
       end
 
-      @@employees << employee
+      employees << employee
     end
-  end
-
-  def self.employees
-    @@employees
+    employees
   end
 
   def gross_salary

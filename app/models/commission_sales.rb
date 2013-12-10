@@ -1,6 +1,6 @@
 class CommissionSales < Employee
-  def initialize(first_name, last_name, base_salary, percent_commission)
-    super(first_name, last_name, base_salary)
+  def initialize(first_name, last_name, position, base_salary, percent_commission)
+    super(first_name, last_name, position, base_salary)
     @percent_commission = percent_commission
     @monthly_sales = 0
   end

@@ -11,3 +11,13 @@
  *= require_self
  *= require_tree .
  */
+
+.owner .name {
+  background-color: yellow;
+  font-size: larger;
+}
+
+.sales .name {
+  color: green;
+  font-weight: bold;
+}

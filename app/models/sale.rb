@@ -1,3 +1,5 @@
+require 'csv'
+
 class Sale
   attr_reader :last_name, :sale_value
   @@sales = []
@@ -7,11 +9,12 @@ class Sale
     @sale_value = sale_value
   end
 
-  def self.sale_data(filename)
+  def self.read_sales(filename)
     CSV.foreach(filename, headers: true) do |row|
       sale = self.new(row[0], row[1].to_i)
       @@sales << sale
     end
+
   end
 
   def self.sales
