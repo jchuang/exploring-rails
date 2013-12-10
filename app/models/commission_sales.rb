@@ -1,4 +1,6 @@
 class CommissionSales < Employee
+  attr_reader :percent_commission
+
   def initialize(first_name, last_name, position, base_salary, percent_commission)
     super(first_name, last_name, position, base_salary)
     @percent_commission = percent_commission

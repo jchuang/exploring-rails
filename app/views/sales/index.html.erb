@@ -1,1 +1,18 @@
 <h1>Sales</h1>
+
+<table>
+  <tr>
+    <th>Sale Amount</th>
+    <th>Salesperson</th>
+    <th>Commission Due</th>
+  </tr>
+
+  <% @expanded_sales.each do |sale| %>
+  <tr>
+    <td><span class="sale <%= sale[:first_name] %>"><%= sale[:sale_value] %></span></td>
+    <td><span class="name <%= sale[:first_name] %>"><%= "#{ sale[:first_name] } #{ sale[:last_name] }" %></span></td>
+    <td><span class="commission <%= sale[:first_name] %>"><%= sale[:commission_due] %></span></td>
+  </tr>
+  <% end %>
+
+</table>
