@@ -31,10 +31,10 @@ class Sale
   #   end
   # end
 
-  # def self.total_sales
-  #   company_sales = 0
-  #   @@sales.each { |sale| company_sales += sale.sale_value }
-  #   company_sales
-  # end
+  def self.total_sales
+    company_sales = 0
+    @@sales.each { |sale| company_sales += sale.sale_value }
+    company_sales
+  end
 
 end
